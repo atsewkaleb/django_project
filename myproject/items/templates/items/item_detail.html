@@ -1,0 +1,13 @@
+{% extends "base_generic.html" %}
+{% block content %}
+  <div class="container mt-4">
+    <h1>{{ item.name }}</h1>
+    <h2>{{ item.description }}</h2>
+    <a href="{% url 'item_update' item.pk %}" class="btn btn-primary">Edit</a>
+    <form method="POST" action="{% url 'item_delete' item.pk %}" style="display: inline;">
+      {% csrf_token %}
+      <button type="submit" class="btn btn-danger">Delete</button>
+    </form>
+    <a href="{% url 'item_list' %}" class="btn btn-secondary">Back to list</a>
+  </div>
+{% endblock %}
